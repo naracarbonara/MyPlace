@@ -1,0 +1,65 @@
+﻿@model IEnumerable<MyPlace.ViewModels.PostViewModel>
+
+@{
+    ViewData["Title"] = "MyPosts";
+}
+
+<h2>MyPosts</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+
+            <td> Image url</td>
+            <td> DatePosted</td>
+            <td> Is Private</td>
+
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var post in Model)
+        {
+
+            <tr>
+                <td>
+
+                    <img src="@post.ImageUrl" />
+                </td>
+                <td>
+
+                    <h5>@post.DateCreated</h5>
+                </td>
+                <td>
+                    @if (post.isPublic == true)
+                    {
+                        <input type="checkbox" checked>
+                    }
+                    else
+                    {
+                        <input type="checkbox">
+                    }
+
+                </td>
+
+
+            <td>
+
+                <a class="btn btn-success" asp-action="Edit" asp-controller="Posts" asp-route-id="@post.Id">Edit</a>
+
+
+            </td>
+            <td>
+
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@post.Id" asp-controller="Posts">Delete</a>
+
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

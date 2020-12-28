@@ -1,0 +1,34 @@
+﻿
+@model List<MyPlace.ViewModels.PostViewModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+    <div class="row">
+
+        @foreach (var post in Model)
+        {
+            @if (post.isPublic)
+            {
+                <div class="col-md-4" style="margin-top:2%">
+                    <div class="card">
+                        @* zafatena *@
+                        <div class="card-body">
+
+
+                            <img src="@post.ImageUrl" style="width:100%;margin-bottom:2%;" />
+
+                            <h6 class="card-subtitle mb-2 text-muted"> @post.DateCreated</h6>
+                            <a asp-action="Details" asp-route-userId="@post.UserId" class="card-link">User: @post.UserName</a>
+                            
+
+                        </div>
+                    </div> 
+                </div>
+            }
+        }
+        </div>
+<div style="display:flex; justify-content:center">
+<a class="btn" asp-controller="Posts" asp-action="Create">Create</a>
+</div>

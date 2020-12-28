@@ -1,0 +1,54 @@
+﻿@model List<MyPlace.ViewModels.DetailsViewModel>
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<p>
+    <a class="btn btn-default" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+           
+            <td> Image url</td>
+            <td> DatePosted</td>
+            <td> Is Public</td>
+
+            
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var post in Model)
+        {
+            
+        <tr>
+            <td>
+
+                <img src="@post.ImageUrl" />
+            </td>
+            <td>
+
+                <h5>@post.DateCreated</h5>
+            </td>
+            <td>
+                @if (post.isPublic == true)
+                {
+                    <input type="checkbox" checked>
+                }
+                else
+                {
+                    <input type="checkbox">
+                }
+
+            </td>
+
+        </tr>
+            
+
+        }
+    </tbody>
+</table>
